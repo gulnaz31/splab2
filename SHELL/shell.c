@@ -11,17 +11,17 @@
 
 int main(int argc, char* argv[]){
 
-	char input[1000];
-	char* arr[100];
+	char hl[1000]; //hello#world#of#linux
+	char* m[100]; // 0 1 2 3
 
-	arr[0] = "/bin/bash";
-	arr[1] = "-c";
-	arr[3] = NULL;
+	m[0] = "/bin/bash";
+	m[1] = "-c";
+	m[3] = NULL;
 	do {
 		printf("$ Enter your command: ");
-		fgets(input, 1000, stdin);
-		char *pch = strtok(input, "\n");
-		arr[2] = input;
+		fgets(hl, 1000, stdin);
+		char *pch = strtok(hla, "\n");
+		m[2] = hl;
 
 		if(strcmp(pch, "exit") == 0){
 		break;
@@ -29,7 +29,7 @@ int main(int argc, char* argv[]){
 
 		pid_t p = fork();
 		if (p == 0){
-			execvp(arr[0], arr);
+			execvp(m[0], m);
 		}
 
 		waitpid(p, NULL,0);
