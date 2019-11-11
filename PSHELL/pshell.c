@@ -11,28 +11,28 @@
 
 int main(int argc, char* argv[]){
 
-	char input[1000];
-	char* arr[100];
+	char hl[1000];
+	char* m[100];
 
-	arr[0] = "/bin/bash";
-	arr[1] = "-c";
-	arr[3] = NULL;
+	m[0] = "/bin/bash";
+	m[1] = "-c";
+	m[3] = NULL;
 	do {
 		printf("$ Enter your command: ");
-		fgets(input, 1000, stdin);
-		char *pch = strtok(input, "\n");
-		arr[2] = input;
+		fgets(hl, 1000, stdin);
+		char *pch = strtok(hl, "\n");
+		m[2] = hl;
 
 		if(strcmp(pch, "exit") == 0){
 		break;
 		}
 		if(strcmp(pch, "showjobs") == 0){
-arr[2] = "ps | awk '$4 != \"pshell\" && $4 != \"bash\" && $4 != \"awk\" && $4 != \"ps\" && $4 != \"CMD\"' | awk '{print NR\".\", \"[\"$1\"]\"}'";
+m[2] = "ps | awk '$4 != \"pshell\" && $4 != \"bash\" && $4 != \"awk\" && $4 != \"ps\" && $4 != \"CMD\"' | awk '{print NR\".\", \"[\"$1\"]\"}'";
 		}		
 
 		pid_t p = fork();
 		if (p == 0){
-			execvp(arr[0], arr);
+			execvp(m[0], m);
 		}
 
 		waitpid(p, NULL,0);
